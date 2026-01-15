@@ -8,6 +8,17 @@
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "react-native",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"],
   "dependencies": {
     "expo": "~54.0.31",
     "expo-status-bar": "~3.0.9",
@@ -17,6 +28,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
+    "babel-preset-expo": "^54.0.9",
     "tailwindcss": "^3.4.19",
     "typescript": "~5.9.2"
   },
