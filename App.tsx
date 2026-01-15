@@ -1,8 +1,17 @@
 import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
+import { useState } from "react";
+import HomeScreen from "./components/HomeScreen";
 
 const backgroundImage = require('./assets/images/HomeBackgroundImage.png');
 
 export default function App() {
+
+  const [screen, setScreen] = useState<"onboarding" | "home">("onboarding");
+  
+  if (screen === "home") {
+    return <HomeScreen /> 
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
@@ -15,7 +24,7 @@ export default function App() {
           </Text>
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={() => alert('Get Started')}>
+        <TouchableOpacity style={styles.button} onPress={() => setScreen("home")}>
           <Text style={styles.buttonLabel}>Get Started</Text>
         </TouchableOpacity>
 
