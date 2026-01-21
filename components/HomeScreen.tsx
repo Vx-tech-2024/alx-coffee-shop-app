@@ -27,53 +27,51 @@ export default function HomeScreen() {
 
       {/* MAIN CONTENT */}
       <View style={styles.content}>
-          <SafeAreaView style={styles.safeArea}>
-            <ScrollView 
-             horizontal={true}
-             showsHorizontalScrollIndicator={false}
-             contentContainerStyle={styles.thelinks}
-             style={{ width: "100%" }}>
-              {links.map((link) => {
-  const isActive = activeLink === link;
+        <SafeAreaView style={styles.safeArea}>
+          <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.thelinks}
+            style={{ width: "100%" }}
+          >
+            {links.map((link) => {
+              const isActive = activeLink === link;
 
-  return (
-    <TouchableOpacity
-      key={link}
-      style={[
-        styles.linkbutton,
-        isActive && styles.activeLinkButton,
-      ]}
-      onPress={() => setActiveLink(link)}
-    >
-      <Text
-        style={[
-          styles.linkText,
-          isActive && styles.activeLinkText,
-        ]}
-      >
-        {link}
-      </Text>
-    </TouchableOpacity>
-  );
-})}
-             </ScrollView>
-          </SafeAreaView>
-        {/* Coffee cards go here */}
+              return (
+                <TouchableOpacity
+                  key={link}
+                  style={[
+                    styles.linkbutton,
+                    isActive && styles.activeLinkButton,
+                  ]}
+                  onPress={() => setActiveLink(link)}
+                >
+                  <Text
+                    style={[
+                      styles.linkText,
+                      isActive && styles.activeLinkText,
+                    ]}
+                  >
+                    {link}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+          </ScrollView>
+        </SafeAreaView>
       </View>
 
       {/* FLOATING PROMO BANNER */}
-      
-      <View style={styles.Banner}
-        pointerEvents="none">
-        <ImageBackground 
-         source={bannerImage}
-         style={styles.Banner}
-         imageStyle={styles.bannerImage}
+      <View
+        style={styles.Banner}
+        pointerEvents="none"
       >
-
-      </ImageBackground>
-        </View>
-
+        <ImageBackground
+          source={bannerImage}
+          style={styles.Banner}
+          imageStyle={styles.bannerImage}
+        />
+      </View>
     </View>
   );
 }
