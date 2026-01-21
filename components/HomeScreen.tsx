@@ -1,8 +1,14 @@
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
+import { useState } from "react";
 
 const bannerImage = require("../assets/images/Banner.png");
+const links = [
+  'All Coffee', 'Machiato', 'Latte', 'Americano', 'Flat White'
+];
 
 export default function HomeScreen() {
+  const [ activeLink, setActiveLink ] = useState("All Coffee");
+
   return (
     <View style={styles.container}>
 
@@ -21,18 +27,52 @@ export default function HomeScreen() {
 
       {/* MAIN CONTENT */}
       <View style={styles.content}>
-        <Text style={styles.sectionTitle}>All Coffee</Text>
+          <SafeAreaView style={styles.safeArea}>
+            <ScrollView 
+             horizontal={true}
+             showsHorizontalScrollIndicator={false}
+             contentContainerStyle={styles.thelinks}
+             style={{ width: "100%" }}>
+              {links.map((link) => {
+  const isActive = activeLink === link;
+
+  return (
+    <TouchableOpacity
+      key={link}
+      style={[
+        styles.linkbutton,
+        isActive && styles.activeLinkButton,
+      ]}
+      onPress={() => setActiveLink(link)}
+    >
+      <Text
+        style={[
+          styles.linkText,
+          isActive && styles.activeLinkText,
+        ]}
+      >
+        {link}
+      </Text>
+    </TouchableOpacity>
+  );
+})}
+             </ScrollView>
+          </SafeAreaView>
         {/* Coffee cards go here */}
       </View>
 
       {/* FLOATING PROMO BANNER */}
-      <ImageBackground
-        source={bannerImage}
-        style={styles.Banner}
-        imageStyle={styles.bannerImage}
+      
+      <View style={styles.Banner}
+        pointerEvents="none">
+        <ImageBackground 
+         source={bannerImage}
+         style={styles.Banner}
+         imageStyle={styles.bannerImage}
       >
 
       </ImageBackground>
+        </View>
 
     </View>
   );
@@ -122,4 +162,33 @@ const styles = StyleSheet.create({
   promoText: {
     fontWeight: "600",
   },
+  safeArea: {
+    backgroundColor: '#fff',
+    width: "100%",
+  },
+  thelinks: {
+    alignItems: 'center',
+    paddingHorizontal: 8,
+    flexDirection: "row",
+  },
+  linkbutton: {
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginHorizontal: 5,
+    borderRadius: 20,
+    
+  },
+  linkText: {
+    color: '#333',
+    fontSize: 16,
+    fontWeight: 'normal'
+  },
+  activeLinkButton: {
+    backgroundColor: "#C67C4E",
+  },
+  activeLinkText: {
+    color: "#fff",
+    fontWeight: "600",
+  }
+
 });
