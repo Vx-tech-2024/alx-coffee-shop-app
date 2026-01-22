@@ -11,6 +11,8 @@ const links = [
 ];
 const FilterImage = require("../assets/images/Filter.png");
 const SearchIcon = require("../assets/images/downloadwhite.png");
+const arrowdown = require("../assets/images/whitearrowdown.png");
+
 export default function HomeScreen() {
   const [ activeLink, setActiveLink ] = useState("All Coffee");
 
@@ -20,14 +22,14 @@ export default function HomeScreen() {
       {/* BLACK HEADER */}
       <View style={styles.TopBlackBackground}>
         <Text style={styles.locationLabel}>Location</Text>
-        <Text style={styles.location}>Bilzen, Tanjungbalai</Text>
+        <Text style={styles.location}>Bilzen, Tanjungbalai {<Image source={arrowdown} style={styles.arrowdown} />}</Text>
 
         <View style={styles.searcharea}>
            <View style={styles.searchBar}>
               <View style={styles.searchIcon}>
                  <Image source={SearchIcon} />
               </View>
-              <Text style={{ color: "#999" }}>Search coffee</Text>
+              <Text style={{ color: "#A2A2A2" }}>Search coffee</Text>
            </View>
            <View style={styles.filterIcon}>
               <Image source={FilterImage} />
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
   /* BLACK HEADER */
   TopBlackBackground: {
     height: 280,
-    backgroundColor: "#111",
+    backgroundColor: "#111111",
     paddingTop: 50,
     paddingHorizontal: 20,
     width: 375,
@@ -125,6 +127,7 @@ const styles = StyleSheet.create({
   locationLabel: {
     color: "#aaa",
     fontSize: 12,
+    fontWeight: "400",
   },
   searcharea: {
     flexDirection: "row",
@@ -147,8 +150,10 @@ const styles = StyleSheet.create({
   location: {
     color: "#fff",
     fontSize: 18,
-    fontWeight: "600",
+    fontWeight: "bold",
     marginBottom: 20,
+    fontFamily: "Sora",
+    fontWeight: "600",
   },
 
   searchBar: {
@@ -165,6 +170,12 @@ const styles = StyleSheet.create({
     color: "#A2A2A2",
     marginRight: 8,
   }, 
+  arrowdown: {
+    width: 20,
+    height: 20,
+    resizeMode: "contain",
+    marginLeft: 5,
+  },
 
   /* WHITE GAP */
   whitesecondbackground: {
