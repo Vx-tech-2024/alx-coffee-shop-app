@@ -6,13 +6,21 @@ import Footer from "./Footer";
 import DrinkCard from "./DrinkCard";
 import OrderScreen from "./OrderScreen";
 
-export default function DetailScreen() {
+export default function DetailScreen({
+  setScreen, currentScreen,
+}: {
+  setScreen: (screen: "onboarding" | "home" | "detail") => void;
+  currentScreen: "home" | "detail";
+}) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Detail Item Screen</Text>
+    <View style={{ flex: 1 }}>
+      {/* your detail UI */}
+
+      <Footer setScreen={setScreen} currentScreen={currentScreen} />
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

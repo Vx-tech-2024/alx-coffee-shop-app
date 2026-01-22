@@ -1,17 +1,23 @@
 import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import HomeScreen from "./components/HomeScreen";
+import DetailScreen from "./components/DetailScreen";
+
 
 const backgroundImage = require('./assets/images/HomeBackgroundImage.png');
 
 export default function App() {
 
-  const [screen, setScreen] = useState<"onboarding" | "home">("onboarding");
+  const [screen, setScreen] = useState<"onboarding" | "home" | "detail">("onboarding");
   
   if (screen === "home") {
-    return <HomeScreen /> 
+    return <HomeScreen setScreen={setScreen} currentScreen="home" />
   }
-
+  
+  if (screen === "detail") {
+    return <DetailScreen setScreen={setScreen} currentScreen="detail" />
+  }
+  
   return (
     <View style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>

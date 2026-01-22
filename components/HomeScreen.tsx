@@ -13,7 +13,7 @@ const FilterImage = require("../assets/images/Filter.png");
 const SearchIcon = require("../assets/images/downloadwhite.png");
 const arrowdown = require("../assets/images/whitearrowdown.png");
 
-export default function HomeScreen() {
+export default function HomeScreen({ setScreen, currentScreen, }: { setScreen: (screen: "onboarding" | "home" | "detail") => void; currentScreen: "home" | "detail" }) {
   const [ activeLink, setActiveLink ] = useState("All Coffee");
 
   return (
@@ -104,7 +104,9 @@ export default function HomeScreen() {
           imageStyle={styles.bannerImage}
         />
       </View>
-      <Footer />
+      <Footer
+        setScreen={setScreen} currentScreen={currentScreen}
+       />
     </View>
   );
 }

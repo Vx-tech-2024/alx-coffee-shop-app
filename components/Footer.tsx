@@ -1,46 +1,43 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from "react-native";
-import HomeScreen from "./HomeScreen";
-import DetailScreen from "./DetailScreen";
-import { useState } from "react";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
+
 const HomeImage = require("../assets/images/Home.png");
 const HeartImage = require("../assets/images/Heart.png");
-const LockImage = require("../assets/images/Bag.png");
+const BagImage = require("../assets/images/Bag.png");
 const NotificationImage = require("../assets/images/Notification.png");
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-export default function Footer() {     
+export default function Footer({ setScreen, currentScreen }: { setScreen: (screen: "onboarding" | "home" | "detail") => void; currentScreen: "home" | "detail" }) {
+  return (
+    <View style={styles.footer}>
+      <TouchableOpacity onPress={() => setScreen("home")}>
+        <Image source={HomeImage} style={[styles.icon, currentScreen === "home" && styles.activeIcon]} />
+      </TouchableOpacity>
 
-    return (
-        <View style={styles.footer}>
-            <TouchableOpacity>
-                <Image source={HomeImage} style={styles.icon} />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <Image source={HeartImage} style={styles.icon} />
-            </TouchableOpacity>
-            <Image source={LockImage} style={styles.icon} />
-            <Image source={NotificationImage} style={styles.icon} />
-        </View>
-    );
+      <TouchableOpacity onPress={() => setScreen("detail")}>
+        <Image source={HeartImage} style={[styles.icon, currentScreen === "detail" && styles.activeIcon]} />
+      </TouchableOpacity>
+
+      <Image source={BagImage} style={styles.icon} />
+      <Image source={NotificationImage} style={styles.icon} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    activeLinkButton: {
-    backgroundColor: "#C67C4E",
-    },
-    activeLinkText: {
-    color: "#fff",
-    fontWeight: "600",
-    },
-    footer: {
+  footer: {
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    },
-    icon: {
+    paddingVertical: 12,
+    backgroundColor: "#fff",
+  },
+  icon: {
     width: 24,
     height: 35,
     resizeMode: "contain",
-    },
+    opacity: 0.4,
+  },
+  activeIcon: {
+    opacity: 1,
+    tintColor: "#C67C4E",
+  },
 });
