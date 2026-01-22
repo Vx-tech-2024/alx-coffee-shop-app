@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, SafeAreaView, FlatList } from "react-native";
 import { useState } from "react";
+import DrinkCard  from "./DrinkCard";
+import { drinks } from "../data/drink";
 
 const bannerImage = require("../assets/images/Banner.png");
 const links = [
@@ -59,6 +61,23 @@ export default function HomeScreen() {
             })}
           </ScrollView>
         </SafeAreaView>
+
+        <FlatList
+          data={drinks}
+          keyExtractor={(item) => item.id}
+          numColumns={2}
+          renderItem={({ item }) => (
+            <DrinkCard drink={item} />
+          )}
+          columnWrapperStyle={{
+            justifyContent: 'space-between',
+          }}
+          contentContainerStyle={{
+            paddingTop: 20,
+            paddingBottom: 100,
+          }}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
 
       {/* FLOATING PROMO BANNER */}
