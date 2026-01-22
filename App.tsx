@@ -27,7 +27,7 @@ export default function App() {
         <TouchableOpacity style={styles.button} onPress={() => setScreen("home")}>
           <Text style={styles.buttonLabel}>Get Started</Text>
         </TouchableOpacity>
-
+      
       </ImageBackground>
     </View>
   );

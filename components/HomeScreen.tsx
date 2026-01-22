@@ -1,13 +1,16 @@
-import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, SafeAreaView, FlatList } from "react-native";
+import { View,Image, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, SafeAreaView, FlatList } from "react-native";
 import { useState } from "react";
 import DrinkCard  from "./DrinkCard";
 import { drinks } from "../data/drink";
+import Footer from "./Footer";
+import DetailScreen  from "./DetailScreen";
 
 const bannerImage = require("../assets/images/Banner.png");
 const links = [
   'All Coffee', 'Machiato', 'Latte', 'Americano', 'Flat White'
 ];
-
+const FilterImage = require("../assets/images/Filter.png");
+const SearchIcon = require("../assets/images/downloadwhite.png");
 export default function HomeScreen() {
   const [ activeLink, setActiveLink ] = useState("All Coffee");
 
@@ -19,8 +22,16 @@ export default function HomeScreen() {
         <Text style={styles.locationLabel}>Location</Text>
         <Text style={styles.location}>Bilzen, Tanjungbalai</Text>
 
-        <View style={styles.searchBar}>
-          <Text style={{ color: "#999" }}>Search coffee</Text>
+        <View style={styles.searcharea}>
+           <View style={styles.searchBar}>
+              <View style={styles.searchIcon}>
+                 <Image source={SearchIcon} />
+              </View>
+              <Text style={{ color: "#999" }}>Search coffee</Text>
+           </View>
+           <View style={styles.filterIcon}>
+              <Image source={FilterImage} />
+           </View>
         </View>
       </View>
 
@@ -91,6 +102,7 @@ export default function HomeScreen() {
           imageStyle={styles.bannerImage}
         />
       </View>
+      <Footer />
     </View>
   );
 }
@@ -114,6 +126,23 @@ const styles = StyleSheet.create({
     color: "#aaa",
     fontSize: 12,
   },
+  searcharea: {
+    flexDirection: "row",
+    marginTop: 12,
+    justifyContent: "space-between",
+
+  },
+
+  filterIcon: {
+    marginLeft: 10,
+    backgroundColor: "#C67C4E",
+    width: 52,
+    height: 50,
+    borderRadius: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 20,
+  },
 
   location: {
     color: "#fff",
@@ -123,12 +152,19 @@ const styles = StyleSheet.create({
   },
 
   searchBar: {
-    height: 52,
+    height: 49,
     backgroundColor: "#222",
     borderRadius: 16,
     paddingHorizontal: 16,
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    width: 240,
+    flexDirection: "row",
+    alignItems: "center",
   },
+  searchIcon: {
+    color: "#A2A2A2",
+    marginRight: 8,
+  }, 
 
   /* WHITE GAP */
   whitesecondbackground: {
