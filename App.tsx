@@ -2,13 +2,16 @@ import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react
 import { useState } from "react";
 import HomeScreen from "./components/HomeScreen";
 import DetailScreen from "./components/DetailScreen";
+import OrderScreen from "./components/OrderScreen";
 
 
 const backgroundImage = require('./assets/images/HomeBackgroundImage.png');
 
 export default function App() {
 
-  const [screen, setScreen] = useState<"onboarding" | "home" | "detail">("onboarding");
+  const [screen, setScreen] = useState<"onboarding" | "home" | "detail" | "order">("onboarding");
+  const [selectedDrinkId, setSelectedDrinkId] = useState<string | null>(null);
+
   
   if (screen === "home") {
     return <HomeScreen setScreen={setScreen} currentScreen="home" />
@@ -16,6 +19,10 @@ export default function App() {
   
   if (screen === "detail") {
     return <DetailScreen setScreen={setScreen} currentScreen="detail" />
+  }
+
+  if ( screen === "order") {
+    return <OrderScreen setScreen={setScreen} currentScreen="order" />
   }
   
   return (

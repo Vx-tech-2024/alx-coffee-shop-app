@@ -10,12 +10,12 @@ import DetailCard from "./DetailCard";
 export default function DetailScreen({
   setScreen, currentScreen,
 }: {
-  setScreen: (screen: "onboarding" | "home" | "detail") => void;
+  setScreen: (screen: "onboarding" | "home" | "detail" | "order") => void;
   currentScreen: "home" | "detail";
 }) {
   return (
     <View style={styles.container}>
-      <DetailCard drinkId="1" />
+      <DetailCard drinkId="1" onBuyNow={() => setScreen("order")} />
 
       <Footer setScreen={setScreen} currentScreen={currentScreen} />
     </View>

@@ -3,7 +3,7 @@ import { DrinkDetail } from "../interfaces/Drink";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Footer from "./Footer";
 
-export default function DetailCard({ drinkId }: { drinkId: string }) {
+export default function DetailCard({ drinkId, onBuyNow }: { drinkId: string; onBuyNow: () => void; }) {
     const drink: DrinkDetail | undefined = detailedDrinks.find(d => d.id === drinkId);
     if (!drink) {
         return (
@@ -61,7 +61,7 @@ export default function DetailCard({ drinkId }: { drinkId: string }) {
                     <Text style={{ fontSize: 24, fontWeight: "600", color: "#C67C4E" }}>$ {drink.price}</Text>
                     
                 </View>
-                <TouchableOpacity style={{ backgroundColor: "#C67C4E", width: 160, height: 52, borderRadius: 16, alignItems: "center", justifyContent: "center" }}>
+                <TouchableOpacity onPress={onBuyNow} style={{ backgroundColor: "#C67C4E", width: 160, height: 52, borderRadius: 16, alignItems: "center", justifyContent: "center" }}>
                     <Text style={{ color: "#fff", fontSize: 16, fontWeight: "600" }}>Buy Now</Text>
                 </TouchableOpacity>
             </View>
