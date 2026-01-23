@@ -1,19 +1,26 @@
 import { View, Text, StyleSheet } from "react-native";
+import Footer from "./Footer";
+import OrderCard from "./OrderCard";
 
-export default function OrderScreen() {
+export default function OrderScreen({
+  setScreen, currentScreen,
+}: {
+  setScreen: (screen: "onboarding" | "home" | "detail" | "order") => void;
+  currentScreen: "home" | "detail" | "order";
+}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Order Screen</Text>
+      <OrderCard />
+      <Footer setScreen={setScreen} currentScreen={currentScreen} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection: "column",
     backgroundColor: "#000",
-    alignItems: "center",
-    justifyContent: "center",
+    
   },
   text: {
     color: "white",
