@@ -5,6 +5,7 @@ import HomeScreen from "./HomeScreen";
 import Footer from "./Footer";
 import DrinkCard from "./DrinkCard";
 import OrderScreen from "./OrderScreen";
+import DetailCard from "./DetailCard";
 
 export default function DetailScreen({
   setScreen, currentScreen,
@@ -13,8 +14,8 @@ export default function DetailScreen({
   currentScreen: "home" | "detail";
 }) {
   return (
-    <View style={{ flex: 1 }}>
-      {/* your detail UI */}
+    <View style={styles.container}>
+      <DetailCard drinkId="1" />
 
       <Footer setScreen={setScreen} currentScreen={currentScreen} />
     </View>
@@ -26,8 +27,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#000",
-    alignItems: "center",
-    justifyContent: "center",
+    
   },
   text: {
     color: "white",

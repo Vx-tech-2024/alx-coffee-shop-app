@@ -8,5 +8,6 @@ export interface Drink {
 
 export interface DrinkDetail extends Drink {
   description: string;
+  rating: string;
   
 }
