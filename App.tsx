@@ -3,13 +3,14 @@ import { useState } from "react";
 import HomeScreen from "./components/HomeScreen";
 import DetailScreen from "./components/DetailScreen";
 import OrderScreen from "./components/OrderScreen";
+import DeliveryScreen from "./components/DeliveryScreen";
 
 
 const backgroundImage = require('./assets/images/HomeBackgroundImage.png');
 
 export default function App() {
 
-  const [screen, setScreen] = useState<"onboarding" | "home" | "detail" | "order">("onboarding");
+  const [screen, setScreen] = useState<"onboarding" | "home" | "detail" | "order" | "delivery">("onboarding");
   const [selectedDrinkId, setSelectedDrinkId] = useState<string | null>(null);
 
   
@@ -23,6 +24,10 @@ export default function App() {
 
   if ( screen === "order") {
     return <OrderScreen setScreen={setScreen} currentScreen="order" />
+  }
+
+  if (screen === "delivery") {
+    return <DeliveryScreen setScreen={setScreen} currentScreen="delivery" />  
   }
   
   return (
