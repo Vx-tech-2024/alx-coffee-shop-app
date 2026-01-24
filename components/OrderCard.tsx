@@ -129,28 +129,28 @@ const styles = StyleSheet.create({
     discount: {
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 16,
+        marginTop: 20,
         paddingHorizontal: 24,
     },
     payment: {
         flexDirection: "column",
-        marginTop: 24,
+        marginTop: 30,
     },
     modeofpayment: {
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 16,
+        marginTop: 25,
         paddingHorizontal: 24,
     },
     orderbutton: {
         backgroundColor: "#C67C4E",
-        height: 56,
+        height: 60,
         borderRadius: 16,
         alignItems: "center",
         justifyContent: "center",
         width: 327,
         alignSelf: "center",
-        marginTop: 32,
+        marginTop: 50,
 
     },
 })
