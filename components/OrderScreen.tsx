@@ -7,14 +7,14 @@ import { Drink } from "../interfaces/Drink";
 import { DeliveryScreen } from "./DeliveryScreen";
 
 export default function OrderScreen({
-  setScreen, currentScreen,
+  setScreen, currentScreen,order,
 }: {
   setScreen: (screen: "onboarding" | "home" | "detail" | "order" | "delivery") => void;
   currentScreen: "home" | "detail" | "order" | "delivery";
 }) {
   return (
     <View style={styles.container}>
-      <OrderCard order={detailedDrinks[0]} />
+      <OrderCard order={detailedDrinks[0]} setScreen={setScreen} />
       <Footer setScreen={setScreen} currentScreen={currentScreen} />
     </View>
   );

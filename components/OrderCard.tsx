@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import Footer from "./Footer";
 import {Drink} from "../interfaces/Drink";
 
-export default function OrderCard({ order }: { order: Drink }) {
+export default function OrderCard({ order, setScreen }: { order: Drink; setScreen: (screen: "delivery") => void; }) {
     return (
         <View style={styles.container}>
             <View style={styles.ordertitle}>
@@ -72,7 +72,7 @@ export default function OrderCard({ order }: { order: Drink }) {
                 <Image style={{ width: 16, height: 16, borderRadius: 8, marginLeft: 150, marginTop: 16 }} source={require("../assets/images/Arrow_Up.png")} />
             </View>
             <View style={styles.orderbutton}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => setScreen("delivery")}>
                     <Text style={{color: "#FFFFFF", width: 49, height: 24, fontFamily: "Sora", fontWeight: "bold", fontSize: 16 }}>Order</Text>
                 </TouchableOpacity>
             </View>
